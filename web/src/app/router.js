@@ -70,6 +70,11 @@ app.config(function($routeProvider, $locationProvider) {
       templateUrl:'/app/components/settings/settings.html',
       activePage:'settings'
     })
+    .when('/api', {
+      controller:'ApiController',
+      templateUrl:'/app/components/api/api.html',
+      activePage:'api'
+    })
     .otherwise({
       redirectTo:'/'
     });

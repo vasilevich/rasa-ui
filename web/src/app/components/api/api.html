@@ -1,0 +1,45 @@
+<ol class="breadcrumb" breadcrumb="">
+        <li class="breadcrumb-item ng-scope active"><span>API</span></li>
+</ol>
+<div class="container-fluid">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-sm-12 col-lg-12">
+
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-lg-12">
+              <div class="card">
+                  <div class="card-header">
+                    <strong>RASA API</strong>
+                  </div>
+                  <div class="card-block">
+                    <div class="row">
+                        <div class="col-sm-12">
+                          <p>We offer a "pass through" API for the Rasa NLU API, the reason Rasa UI does this, is to provide logging of the requests and types, for future and further analsysis to improve your training.</p>
+                          <p>Your Application <--> Rasa UI Middleware <--> Rasa NLU </p>
+                        </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card">
+                  <div class="card-header">
+                    <strong>Examples</strong>
+                  </div>
+                  <div class="card-block">
+                    <div class="row">
+                        <div class="col-sm-12">
+                          <p>POST /parse</p>
+                          <blockquote><pre><code id="parse">curl -XPOST localhost:5000/parse -d '{"q":"hello there"}'</code></pre></blockquote>
+
+                          <p>POST /train</p>
+                          <blockquote><pre><code id="train">curl -XPOST localhost:5000/parse -d '{"q":"hello there"}'</code></pre></blockquote>
+                        </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+</div>
