@@ -56,4 +56,8 @@ RUN sed -r 's/("postgresConnectionString": )"[^"]*"(.*)/\1"\/var\/run\/postgresq
 EXPOSE 5000
 EXPOSE 5001
 
+# VOLUME /opt/rasaui/logs
+# VOLUME /opt/rasaui/models
+VOLUME /var/lib/postgresql
+
 ENTRYPOINT bash -c 'hostname -I; service postgresql start && su rasaui -c "python -m rasa_nlu.server --pipeline spacy_sklearn & npm start"'
