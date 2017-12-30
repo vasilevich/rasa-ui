@@ -45,7 +45,7 @@ RUN chown rasaui -R .
 
 # Install packages
 RUN npm install
-RUN npm install web/src/
+RUN npm --prefix ./web/src/ install ./web/src/
 RUN pip install -U pip
 RUN pip install rasa_nlu sklearn_crfsuite spacy sklearn scipy
 RUN python -m spacy download en
