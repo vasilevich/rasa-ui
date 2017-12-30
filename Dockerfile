@@ -45,7 +45,6 @@ RUN chown rasaui -R .
 
 # Install packages
 RUN npm install
-RUN npm --prefix ./web/src/ install ./web/src/
 RUN pip install -U pip
 RUN pip install rasa_nlu sklearn_crfsuite spacy sklearn scipy
 RUN python -m spacy download en
@@ -54,7 +53,28 @@ RUN python -m spacy download en
 RUN sed -r 's/("rasaserver": )"[^"]*"(.*)/\1"http:\/\/127.0.0.1:5000"\2/' -i package.json
 RUN sed -r 's/("postgresConnectionString": )"[^"]*"(.*)/\1"\/var\/run\/postgresql"\2/' -i package.json
 
+
+FROM node:boron
+
+# Create app directory
+WORKDIR /usr/src/app
+
+# Install app dependencies
+COPY package.json package-lock.json ./
+RUN npm install
+
+# Bundle app source
+COPY . .
+
+#Install webapp dependencies
+WORKDIR /usr/src/app/web/src/
+RUN cd /usr/src/app/web/src/
+RUN npm install
+
+WORKDIR /usr/src/app
+RUN ls -ltr
+
 EXPOSE 5000
 EXPOSE 5001
-
+CMD [ "npm", "start" ]
 ENTRYPOINT bash -c 'hostname -I; service postgresql start && su rasaui -c "python -m rasa_nlu.server --pipeline spacy_sklearn & npm start"'
