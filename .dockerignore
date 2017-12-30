@@ -1,1 +1,7 @@
+<<<<<<< HEAD
 Dockerfile
+=======
+node_modules
+npm-debug.log
+web/src/node_modules
+>>>>>>> ae3a1e903231f6c382c5feb06b76096eb5e71774

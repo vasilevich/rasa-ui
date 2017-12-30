@@ -30,7 +30,7 @@ RUN apt-get install -y postgresql postgresql-contrib
 RUN mkdir /opt/pgsql
 RUN chown postgres -R /opt/pgsql
 WORKDIR /opt/pgsql
-ENV POSGRESPASS=a_very_secret_password_for_the_database
+ENV POSGRESPASS=123123123
 ADD resources/dbcreate.sql dbcreate.sql
 RUN service postgresql start && su postgres -c "createuser rasaui && echo \"create database rasaui; \c rasaui; \i dbcreate.sql\" | psql && echo \"grant all on database rasaui to rasaui; grant all privileges on all tables in schema public to rasaui; grant all privileges on all sequences in schema public to rasaui \"|psql rasaui" && service postgresql stop
 

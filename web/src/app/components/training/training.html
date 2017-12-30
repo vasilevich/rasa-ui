@@ -5,7 +5,7 @@
     <div class="animated fadeIn">
         <div class="row">
           <div class="col-sm-12">
-            <div class="alert alert-info" role="alert" ng-show="trainings_under_this_process !== 0">
+            <div class="alert alert-info" role="alert" ng-show="$root.trainings_under_this_process > 0">
               <strong>Training</strong> is currently running.
             </div>
             <div class="card">
@@ -27,6 +27,14 @@
                             <button type="button" class="btn btn-secondary" ng-show="exportdata !== undefined" ng-click="savetofile()"><i class="fa fa-file"></i>&nbsp; Download File</button>
                             <a href="" id="a"></a>
                       </div>
+                      <div class="col-sm-3">
+                        <span ng-show="exportdata !== undefined" >To Lower case  <label class="switch switch-3d switch-success" ng-show="exportdata !== undefined">
+                            <input type="checkbox" class="switch-input" ng-model="toLowercase" ng-change="getData(agent.agent_id)">
+                            <span class="switch-label"></span>
+                            <span class="switch-handle"></span>
+                        </label>
+                      </span>
+                    </div>
                     </div>
                 </div>
                 <div class="card-block" ng-show="exportdata !== undefined">
@@ -45,13 +53,13 @@
                     <thead>
                       <tr>
                         <th>Create Date/Time</th>
-                        <th>Path</th>
+                        <th>Name</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr ng-repeat="model in available_models track by model.folder | orderBy: datetime : true">
-                        <td>{{ model.date }}</td>
-                        <td>{{ model.folder }}</td>
+                      <tr ng-repeat="model in available_models | orderBy: datetime : true">
+                        <td>{{ model.xdate }}</td>
+                        <td>{{ model.name }}</td>
                       </tr>
                     </tbody>
                   </table>
