@@ -53,9 +53,6 @@ RUN python -m spacy download en
 RUN sed -r 's/("rasaserver": )"[^"]*"(.*)/\1"http:\/\/127.0.0.1:5000"\2/' -i package.json
 RUN sed -r 's/("postgresConnectionString": )"[^"]*"(.*)/\1"\/var\/run\/postgresql"\2/' -i package.json
 
-
-FROM node:boron
-
 # Create app directory
 WORKDIR /usr/src/app
 
